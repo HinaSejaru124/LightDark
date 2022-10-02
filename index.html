@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5em;
+      background-color: skyblue;
+      flex-direction: column;
+      transition: all 60s;
+    }
+
+    img {
+      width: 80px;
+    }
+    img:last-of-type {
+      filter: invert() brightness(100%);
+      transform: rotateZ(45deg);
+    }
+
+    #sunmoon {
+      border: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+      gap: 15em;
+      transition: all 60s;
+      position: relative;
+    }
+
+    .mask {
+      background-color: hsl(120, 100%, 25%);
+      height: 25em;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      transition: all 60s;
+      width: 100%;
+    }
+
+    button {
+      background-color: hsl(245, 20%, 22%);
+      padding: 0.5em;
+      border: 0;
+      border-radius: 5px;
+      z-index: 3;
+      color: white;
+      cursor: pointer;
+      transition: all 60s;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <div id="sunmoon">
+      <img src="C:\Users\COMPUTER CARE\Desktop\HinaSejaru124\ionicons.designerpack\sunny.svg" alt="">
+      <img src="C:\Users\COMPUTER CARE\Desktop\HinaSejaru124\ionicons.designerpack\moon.svg" alt="">
+    </div>
+    <div class="mask"></div>
+  </div>
+  <button id="changemode">Change to night mode</button>
+
+  <script>
+    const changemode = document.getElementById("changemode"),
+      sunmoon = document.getElementById("sunmoon"),
+      mask = document.getElementsByClassName("mask")[0]
+    function sun() {
+      changemode.addEventListener("click", () => {
+        sunmoon.style.transform = "rotateZ(-180deg)"
+        changemode.style.backgroundColor = "white"
+        changemode.style.color = "rgb(47, 45, 68)"
+        changemode.innerHTML = "Change to day mode"
+        document.body.style.backgroundColor = "hsl(245, 20%, 22%)"
+        mask.style.backgroundColor = "hsl(120, 100%, 2%)"
+        moon()
+      })
+    }
+    function moon() {
+      changemode.addEventListener("click", () => {
+        sunmoon.style.transform = "rotateZ(0deg)"
+        changemode.style.backgroundColor = "rgb(47, 45, 68)"
+        changemode.style.color = "white"
+        changemode.innerHTML = "Change to night mode"
+        document.body.style.backgroundColor = "skyblue"
+        mask.style.backgroundColor = "green"
+        sun()
+      })
+    }
+    sun()
+    let date = new Date
+    // = date.getHours()
+  </script>
+</body>
+
+</html>
